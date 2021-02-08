@@ -29,13 +29,21 @@ class MovieDetailViewController: UIViewController {
         webView.translatesAutoresizingMaskIntoConstraints = false
         return webView
     }()
+    lazy var descriptionWordLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Description"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+
+        return label
+    }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.numberOfLines = 0
-        label.backgroundColor = .green
-        //label.textAlignment = .center
+        //label.backgroundColor = .green
+        label.textAlignment = .justified
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -113,7 +121,7 @@ extension MovieDetailViewController {
 
        
         title = movieTitle
-        let UIElements = [trailerWebKit, descriptionLabel, activityIndicator]
+        let UIElements = [trailerWebKit, descriptionLabel, activityIndicator, descriptionWordLabel]
         UIElements.forEach { (element) in
             view.addSubview(element)
         }
@@ -123,10 +131,14 @@ extension MovieDetailViewController {
             trailerWebKit.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             trailerWebKit.heightAnchor.constraint(equalToConstant: 200),
             
-            descriptionLabel.topAnchor.constraint(equalTo: trailerWebKit.bottomAnchor, constant: 10),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            descriptionWordLabel.topAnchor.constraint(equalTo: trailerWebKit.bottomAnchor, constant: 50),
+            descriptionWordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            
+            
+            descriptionLabel.topAnchor.constraint(equalTo: descriptionWordLabel.bottomAnchor, constant: 20),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+//            descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
             
             activityIndicator.centerXAnchor.constraint(equalTo: trailerWebKit.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: trailerWebKit.centerYAnchor),

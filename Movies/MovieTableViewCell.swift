@@ -21,7 +21,8 @@ class MovieTableViewCell: UITableViewCell {
         label.textColor = .black
         //label.backgroundColor = .red
         label.numberOfLines = 0
-        //label.font = UIFont.systemFont(ofSize: 15)
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -29,6 +30,8 @@ class MovieTableViewCell: UITableViewCell {
     lazy var releaseDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14)
+
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -68,9 +71,8 @@ extension MovieTableViewCell {
             movieImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             
             titleLabel.topAnchor.constraint(equalTo: movieImageView.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 25),
-            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25),
-            titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: movieImageView.trailingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             
             releaseDateLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             releaseDateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
